@@ -21,6 +21,7 @@ lerna-debug.log*
 backend/venv/
 backend/.env
 backend/db.sqlite3
+backend/.python-version
 
 # Python cache
 backend/**/__pycache__/
