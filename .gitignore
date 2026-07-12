@@ -1,0 +1,49 @@
+# ==========================
+# Frontend (React/Vite)
+# ==========================
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================
+# Backend (Django)
+# ==========================
+backend/venv/
+backend/.env
+backend/db.sqlite3
+
+# Python cache
+backend/**/__pycache__/
+backend/**/*.py[cod]
+
+# ==========================
+# Editors
+# ==========================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Misc
+# ==========================
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
