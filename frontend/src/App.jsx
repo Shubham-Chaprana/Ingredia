@@ -1,11 +1,23 @@
-import Header from "./components/Header"
-import Main from "./Main"
+import { Routes, Route } from "react-router-dom";
 
-export default function App() {
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Chat from "./pages/Chat";
+import ProtectedRoute from "./auth/ProtectedRoute";
+
+
+function App() {
   return (
-    <>
-      <Header />
-      <Main />
-    </>
-  )
+    <Routes>
+      <Route path="/" element={
+        <ProtectedRoute>
+            <Chat />
+        </ProtectedRoute>
+    } />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  );
 }
+
+export default App;

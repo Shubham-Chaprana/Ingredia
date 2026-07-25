@@ -8,7 +8,6 @@ from .serializers import RegisterSerializer
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def register(request):
     serializer = RegisterSerializer(data=request.data)
 
