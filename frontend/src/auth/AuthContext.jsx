@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect} from "react";
 import { setTokens,clearTokens,getAccessToken } from "../api/tokenService";
 import { loginUser } from "../api/auth";
 
@@ -27,6 +27,18 @@ export function AuthProvider({ children }) {
     setAccessToken(null);
     setUser(null);
 };
+
+  useEffect(() => {
+      const handleAuthLogout = () => {
+          logout()
+      }
+
+      window.addEventListener("auth:logout", handleAuthLogout)
+
+      return () => {
+          window.removeEventListener("auth:logout", handleAuthLogout)
+      }
+  }, [])
 
   const value = {
     accessToken,

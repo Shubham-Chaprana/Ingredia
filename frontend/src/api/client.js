@@ -1,4 +1,4 @@
-import { getAccessToken } from "./tokenService";
+import { getAccessToken, clearTokens } from "./tokenService"
 import { refreshAccessToken } from "./auth";
 
 const BASE_URL = "http://127.0.0.1:8000/api";
@@ -51,11 +51,11 @@ export async function authFetch(endpoint, options = {}) {
     };
 
     let { response, data } = await baseFetch(endpoint, requestConfig);
-
+    
     if (response.status === 401) {
         try {
             const newAccessToken = await refreshAccessToken();
-
+            
             requestConfig = {
                 ...requestConfig,
                 headers: {
@@ -65,8 +65,14 @@ export async function authFetch(endpoint, options = {}) {
             };
 
             ({ response, data } = await baseFetch(endpoint, requestConfig));
-        } catch (error) {
-            console.error("Token refresh failed:", error);
+        } 
+        catch (error) {
+            console.error("Token refresh failed:", error)
+
+            clearTokens()
+            window.dispatchEvent(new Event("auth:logout"))
+
+            throw error
         }
     }
 
