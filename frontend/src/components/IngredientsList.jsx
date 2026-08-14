@@ -1,9 +1,14 @@
 export default function IngredientsList(props) {
-    const ingredientsListItems = props.ingredients.map((ingredient,index) => (
-        <div key={index}>
-            <li>{ingredient}</li>
-            <button  onClick={() => {props.removeIngredient(index)}}>X</button>
-        </div>
+    const ingredientsListItems = props.ingredients.map((ingredient, index) => (
+        <li key={index} className="ingredient-chip">
+            <span>{ingredient}</span>
+            <button
+                onClick={() => props.removeIngredient(index)}
+                aria-label={`Remove ${ingredient}`}
+            >
+                ×
+            </button>
+        </li>
     ))
     return (
         <section>

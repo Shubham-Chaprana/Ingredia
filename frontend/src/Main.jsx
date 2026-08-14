@@ -36,8 +36,8 @@ export default function Main() {
     }
 
     function addIngredient(formData) {
-        const newIngredient = formData.get("ingredient")
-        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+        const newIngredient = formData.get("ingredient").trim()
+        if(newIngredient!= "") setIngredients(prevIngredients => [...prevIngredients, newIngredient])
     }
     function removeIngredient(indexToRemove) {
         setIngredients(prevIngredients =>
@@ -67,6 +67,7 @@ export default function Main() {
         <main>
             <Sidebar
                 recipeHistory={recipeHistory}
+                selectedRecipeId = {selectedRecipeId}
                 onSelectRecipe={(selectedRecipe) => {
                     setIngredients(selectedRecipe.ingredients.split(", "))
                     setRecipe(selectedRecipe.recipe)
@@ -75,26 +76,54 @@ export default function Main() {
                 onNewRecipe={startNewRecipe}
                 onDeleteRecipe={handleDeleteRecipe}
             />
-            <form action={addIngredient} className="add-ingredient-form">
-                <input
-                    type="text"
-                    placeholder="e.g. oregano"
-                    aria-label="Add ingredient"
-                    name="ingredient"
-                />
-                <button>Add ingredient</button>
-            </form>
 
-            {ingredients.length > 0 &&
-                <IngredientsList
-                    ingredients={ingredients}
-                    getRecipe={getRecipe}
-                    isLoading = {isLoading}
-                    removeIngredient={removeIngredient}
-                />
-            }
+            <div className="main-content">
+                <div className="main-content-inner">
 
-            {recipe && <ClaudeRecipe recipe={recipe} />}
+                    {ingredients.length === 0 && !recipe && (
+                        <div className="empty-recipe-state">
+                            <div className="empty-recipe-icon">👨‍🍳</div>
+                            <h2>What's cooking?</h2>
+                            <p>
+                                Start by adding the ingredients you have on hand.
+                                Chef Claude will turn them into a recipe for you.
+                            </p>
+                        </div>
+                    )}
+
+                    <div className="ingredient-input-section">
+                        <h2>Add ingredients</h2>
+
+                        <form
+                            action={addIngredient}
+                            className="add-ingredient-form"
+                        >
+                            <input
+                                type="text"
+                                placeholder="e.g. oregano"
+                                aria-label="Add ingredient"
+                                name="ingredient"
+                            />
+
+                            <button type="submit">
+                                Add ingredient
+                            </button>
+                        </form>
+                    </div>
+
+                    {ingredients.length > 0 && (
+                        <IngredientsList
+                            ingredients={ingredients}
+                            getRecipe={getRecipe}
+                            isLoading={isLoading}
+                            removeIngredient={removeIngredient}
+                        />
+                    )}
+
+                    {recipe && <ClaudeRecipe recipe={recipe} />}
+
+                </div>
+            </div>
         </main>
     )
 }

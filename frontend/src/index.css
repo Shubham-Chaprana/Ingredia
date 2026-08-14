@@ -16,6 +16,30 @@ header {
     height: 80px;
     background-color: white;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #D1D5DB;
+}
+main {
+    display: flex;
+    height: calc(100vh - 80px);
+    padding: 0;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: #FAFAF8;
+}
+
+.main-content-inner {
+    max-width: 950px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 35px;
+    background-color: white;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
 header > img {
@@ -26,9 +50,6 @@ header > h1 {
     font-weight: 400;
 }
 
-main {
-    padding: 30px 30px 10px;
-}
 
 .add-ingredient-form {
     display: flex;
@@ -62,14 +83,45 @@ main {
     content: "+";
     margin-right: 5px;
 }
-
 ul.ingredients-list {
-    margin-bottom: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 28px 0 48px;
+    list-style: none;
 }
 
-ul.ingredients-list > li {
+.ingredient-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px 7px 13px;
+    border: 1px solid #D1D5DB;
+    border-radius: 20px;
+    background-color: #F0EFEB;
     color: #475467;
-    line-height: 28px;
+    font-size: 0.9rem;
+}
+
+.ingredient-chip button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #6B7280;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.ingredient-chip button:hover {
+    background-color: #D1D5DB;
+    color: #141413;
 }
 
 .get-recipe-container {
@@ -119,4 +171,143 @@ ul.ingredients-list > li {
 
 .suggested-recipe-container ul li, .suggested-recipe-container ol li {
     margin-bottom: 8px;
+}
+/* .sidebar {
+    width: 260px;
+    padding: 20px;
+    background-color: white;
+    border-right: 1px solid #D1D5DB;
+    min-height: calc(100vh - 80px);
+} */
+.sidebar {
+    width: 260px;
+    padding: 20px;
+    background-color: white;
+    border-right: 1px solid #D1D5DB;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.new-recipe-button {
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #141413;
+    color: #FAFAF8;
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.recipe-history {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.recipe-history-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.recipe-history-button {
+    flex-grow: 1;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #475467;
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.recipe-history-button:hover {
+    background-color: #F0EFEB;
+}
+.recipe-history-button.selected {
+    background-color: #F0EFEB;
+    color: #141413;
+    font-weight: 500;
+}
+
+.delete-recipe-button {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-recipe-button:hover {
+    background-color: #F0EFEB;
+}
+.empty-recipe-state {
+    max-width: 600px;
+    margin: 70px auto 35px;
+    text-align: center;
+}
+
+.empty-recipe-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.empty-recipe-state h2 {
+    margin: 0 0 10px;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #141413;
+}
+
+.empty-recipe-state p {
+    margin: 0;
+    color: #6B7280;
+    font-size: 1rem;
+    line-height: 26px;
+}
+.logout-button {
+    padding: 7px 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    background-color: white;
+    color: #475467;
+    font-family: Inter, sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #F0EFEB;
+    color: #141413;
+}
+.delete-recipe-button {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-recipe-button:hover {
+    background-color: #F0EFEB;
+    color: #98A2B3;
+}
+.recipe-history-section {
+    margin-top: 28px;
+}
+
+.recipe-history-section h2 {
+    margin: 0 0 10px;
+    padding: 0 10px;
+    color: #6B7280;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }

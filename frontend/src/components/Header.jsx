@@ -16,6 +16,7 @@ export default function Header() {
                     logout();
                     navigate("/login");
                 }}
+                className="logout-button"
             >
                 Logout
             </button>
