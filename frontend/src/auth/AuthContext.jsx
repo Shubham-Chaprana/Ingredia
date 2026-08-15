@@ -15,10 +15,12 @@ export function AuthProvider({ children }) {
         setAccessToken(data.access);
         setTokens(data.access, data.refresh);
 
-        return true;
+        return {success : true};
     } catch (error) {
-        console.error(error);
-        return false;
+        return{
+          success : false,
+          status : error.status
+        };
     }
 };
 

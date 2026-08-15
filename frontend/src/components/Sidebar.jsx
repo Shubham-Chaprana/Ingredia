@@ -1,3 +1,4 @@
+import { useState } from "react"
 export default function Sidebar({
     recipeHistory,
     selectedRecipeId,
@@ -5,6 +6,7 @@ export default function Sidebar({
     onNewRecipe,
     onDeleteRecipe
 }) {
+    const [recipeToDelete, setRecipeToDelete] = useState(null)
     return (
         <aside className="sidebar">
             <button
@@ -32,7 +34,7 @@ export default function Sidebar({
 
                             <button
                                 className="delete-recipe-button"
-                                onClick={() => onDeleteRecipe(recipe.id)}
+                                onClick={() => setRecipeToDelete(recipe)}
                                 aria-label={`Delete ${recipe.title}`}
                             >
                                 <i className="fa-solid fa-trash"></i>
@@ -41,6 +43,35 @@ export default function Sidebar({
                     ))}
                 </div>
             </div>
+            {recipeToDelete && (
+                <div className="delete-modal-backdrop">
+                    <div className="delete-modal">
+                        <h2>Delete recipe?</h2>
+
+                        <p>
+                            Are you sure you want to delete{" "}
+                            <strong>{recipeToDelete.title}</strong>?
+                        </p>
+
+                        <div className="delete-modal-actions">
+                            <button
+                                onClick={() => setRecipeToDelete(null)}
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                onClick={async () => {
+                                    await onDeleteRecipe(recipeToDelete.id)
+                                    setRecipeToDelete(null)
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </aside>
     )
 }

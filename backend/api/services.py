@@ -10,10 +10,8 @@ def generate_recipe(ingredients):
     prompt = RECIPE_PROMPT.format(
         ingredients=", ".join(ingredients)
     )
-
     response = client.models.generate_content(
         model=MODEL,
         contents=prompt,
     )
-
     return response.text

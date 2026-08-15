@@ -1,6 +1,6 @@
 import { authFetch } from "./client";
 export async function getRecipeFromChefClaude(ingredients) {
-    const { data } = await authFetch("/chat/", {
+    const { response , data } = await authFetch("/chat/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -8,7 +8,14 @@ export async function getRecipeFromChefClaude(ingredients) {
         body: JSON.stringify({
             ingredients: ingredients,
         }),
+
     });
+
+    if (!response.ok) {
+        const error = new Error(data.detail || "Recipe generation failed");
+        error.status = response.status;
+        throw error;
+    }
 
     return data;
 }

@@ -22,7 +22,10 @@ export default function Register() {
 
             navigate("/login");
         } catch (error) {
-            setError(error.message);
+            if(error.status === 429){
+                setError("Too many registration attempts. Please try again later.")
+            }
+            else setError(error.message);
         } finally {
             setLoading(false);
         }

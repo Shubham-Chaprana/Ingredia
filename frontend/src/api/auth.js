@@ -38,7 +38,9 @@ export async function loginUser(username, password) {
     });
 
     if (!response.ok) {
-        throw new Error(data.detail || "Login failed");
+        const error =  new Error(data.detail || "Login failed");
+        error.status = response.status;
+        throw error;
     }
 
     return data;
@@ -56,7 +58,11 @@ export async function registerUser(username, email, password) {
 
     if (!response.ok) {
         const firstError = Object.values(data).flat()[0];
-        throw new Error(firstError || "Registration failed");
+
+        const error = new Error(firstError || "Registration failed");
+        error.status = response.status;
+
+        throw error;
     }
 
     return data;

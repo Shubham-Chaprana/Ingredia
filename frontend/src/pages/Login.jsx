@@ -17,14 +17,22 @@ export default function Login() {
         setError("");
         setLoading(true);
 
-        const success = await login(username, password);
+        const {success , status} = await login(username, password);
 
         setLoading(false);
 
         if (success) {
             navigate("/");
         } else {
-            setError("Invalid username or password.");
+            if(status === 401){
+                setError("Invalid username or password.");
+            }
+            else if(status === 429){
+                setError("Too Many Attempts.Please Try Again Later.")
+            }
+            else{
+                setError("Something went wrong. Please try again.");
+            }
         }
     };
 

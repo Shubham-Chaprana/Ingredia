@@ -10,7 +10,8 @@ export default function Main() {
     const [isLoading,setIsLoading] = useState(false)
     const [recipeHistory, setRecipeHistory] = useState([])
     const [selectedRecipeId, setSelectedRecipeId] = useState(null)
-
+    const [error, setError] = useState(null)
+    
     useEffect(() => {
         async function loadHistory() {
             const history = await getRecipeHistory()
@@ -23,12 +24,20 @@ export default function Main() {
     async function getRecipe() {
         try{
             setIsLoading(true)
+            setError("")
             const recipeData = await getRecipeFromChefClaude(ingredients)
             setRecipe(recipeData.recipe)
             setSelectedRecipeId(recipeData.id)
             setRecipeHistory((prev)=>[
                 recipeData,...prev
             ])
+        }
+        catch (error) {
+            if (error.status === 429) {
+                setError("Too many recipe requests. Please try again later.");
+            } else {
+                setError("Something went wrong while generating your recipe.");
+            }
         }
         finally{
             setIsLoading(false)
@@ -61,13 +70,14 @@ export default function Main() {
         if (recipeId === selectedRecipeId) {
             startNewRecipe()
         }
+        return true;
     }
 
     return (
         <main>
             <Sidebar
                 recipeHistory={recipeHistory}
-                selectedRecipeId = {selectedRecipeId}
+                selectedRecipeId={selectedRecipeId}
                 onSelectRecipe={(selectedRecipe) => {
                     setIngredients(selectedRecipe.ingredients.split(", "))
                     setRecipe(selectedRecipe.recipe)
@@ -119,7 +129,7 @@ export default function Main() {
                             removeIngredient={removeIngredient}
                         />
                     )}
-
+                    {error && <p className="error" > {error} </p>}
                     {recipe && <ClaudeRecipe recipe={recipe} />}
 
                 </div>
