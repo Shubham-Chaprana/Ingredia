@@ -29,32 +29,59 @@ export default function Login() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <div className="auth-page">
+            <div className="auth-card">
+                <div className="auth-brand">
+                    <span className="auth-brand-icon">👨‍🍳</span>
+                    <h1>Chef Claude</h1>
+                </div>
 
-        <input
-            type="text"
-            placeholder="eg. User123"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-        />
+                <div className="auth-heading">
+                    <h2>Welcome back</h2>
+                    <p>Log in to continue cooking.</p>
+                </div>
 
-        <input
-            type="password"
-            placeholder="eg. Password123"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-        />
+                <form onSubmit={handleSubmit} className="auth-form">
+                    <div className="auth-field">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            id="username"
+                            type="text"
+                            placeholder="e.g. User123"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
 
-        <button 
-        type="submit" disabled = {loading}
-        >{ loading ? "Logging in..." : "Login"}</button>
-        {error && <p className="error">{error}</p>}
+                    <div className="auth-field">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
 
-        <p>
-            Don't have an account?{" "}
-            <Link to="/register">Register</Link>
-        </p>
-        </form>
-    );
+                    {error && <p className="error">{error}</p>}
+
+                    <button
+                        type="submit"
+                        className="auth-submit-button"
+                        disabled={loading}
+                    >
+                        {loading ? "Logging in..." : "Login"}
+                    </button>
+                </form>
+
+                <p className="auth-switch">
+                    Don't have an account?{" "}
+                    <Link to="/register">Register</Link>
+                </p>
+            </div>
+        </div>
+    )
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate , Link } from "react-router-dom";
 import { registerUser } from "../api/auth";
 
-export default function Login() {
+export default function Register() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -29,40 +29,71 @@ export default function Login() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
+        <div className="auth-page">
+            <div className="auth-card">
+                <div className="auth-brand">
+                    <span className="auth-brand-icon">👨‍🍳</span>
+                    <h1>Chef Claude</h1>
+                </div>
 
-        <input
-            type="text"
-            placeholder="eg. User123"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-        />
-        
-        <input
-            type="text"
-            placeholder="eg. newUser@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-        />
+                <div className="auth-heading">
+                    <h2>Create your account</h2>
+                    <p>Start turning ingredients into recipes.</p>
+                </div>
 
-        <input
-            type="password"
-            placeholder="eg. Password123"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-        />
+                <form onSubmit={handleSubmit} className="auth-form">
+                    <div className="auth-field">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            id="username"
+                            type="text"
+                            placeholder="e.g. User123"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
 
-        <button 
-        type="submit" disabled = {loading}
-        >{ loading ? "Creating account..." : "Register"}</button>
-        {error && <p className="error">{error}</p>}
+                    <div className="auth-field">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="e.g. newUser@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
 
-        <p>
-            Already have an account?{" "}
-            <Link to="/login">Login</Link>
-        </p>
-        </form>
+                    <div className="auth-field">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Create a password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
 
-    );
+                    {error && <p className="error">{error}</p>}
+
+                    <button
+                        type="submit"
+                        className="auth-submit-button"
+                        disabled={loading}
+                    >
+                        {loading ? "Creating account..." : "Register"}
+                    </button>
+                </form>
+
+                <p className="auth-switch">
+                    Already have an account?{" "}
+                    <Link to="/login">Login</Link>
+                </p>
+            </div>
+        </div>
+    )
 }

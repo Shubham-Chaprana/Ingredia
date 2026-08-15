@@ -6,7 +6,6 @@ from rest_framework.decorators import permission_classes
 from .serializers import RegisterSerializer
 
 
-
 @api_view(["POST"])
 def register(request):
     serializer = RegisterSerializer(data=request.data)

@@ -54,8 +54,9 @@ export async function registerUser(username, email, password) {
         }),
     });
 
-    if (!response.ok) {        
-        throw new Error(data.detail || "Registration failed");
+    if (!response.ok) {
+        const firstError = Object.values(data).flat()[0];
+        throw new Error(firstError || "Registration failed");
     }
 
     return data;

@@ -230,6 +230,7 @@ ul.ingredients-list {
 .recipe-history-button:hover {
     background-color: #F0EFEB;
 }
+
 .recipe-history-button.selected {
     background-color: #F0EFEB;
     color: #141413;
@@ -310,4 +311,140 @@ ul.ingredients-list {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #FAFAF8;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    background-color: white;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+}
+
+.auth-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.auth-brand-icon {
+    font-size: 2rem;
+}
+
+.auth-brand h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #141413;
+}
+
+.auth-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-heading h2 {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #141413;
+}
+
+.auth-heading p {
+    margin: 0;
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.auth-field label {
+    color: #475467;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.auth-field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    background-color: white;
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.auth-field input:focus {
+    outline: none;
+    border-color: #D17557;
+    box-shadow: 0 0 0 2px rgba(209, 117, 87, 0.15);
+}
+
+.auth-submit-button {
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #141413;
+    color: #FAFAF8;
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.auth-submit-button:hover {
+    opacity: 0.9;
+}
+
+.auth-submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-switch {
+    margin: 24px 0 0;
+    text-align: center;
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+.auth-switch a {
+    color: #D17557;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    margin: 0;
+    color: #B42318;
+    font-size: 0.85rem;
 }
