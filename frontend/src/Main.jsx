@@ -11,6 +11,7 @@ export default function Main() {
     const [recipeHistory, setRecipeHistory] = useState([])
     const [selectedRecipeId, setSelectedRecipeId] = useState(null)
     const [error, setError] = useState(null)
+    const [sidebarOpen, setSidebarOpen] = useState(false)
     
     useEffect(() => {
         async function loadHistory() {
@@ -82,11 +83,22 @@ export default function Main() {
                     setIngredients(selectedRecipe.ingredients.split(", "))
                     setRecipe(selectedRecipe.recipe)
                     setSelectedRecipeId(selectedRecipe.id)
+                    setSidebarOpen(false)
                 }}
-                onNewRecipe={startNewRecipe}
+                onNewRecipe={() => {
+                    startNewRecipe()
+                    setSidebarOpen(false)
+                }}
                 onDeleteRecipe={handleDeleteRecipe}
+                sidebarOpen={sidebarOpen}
+                onClose={() => setSidebarOpen(false)}
             />
-
+            <button
+                className="mobile-menu-button"
+                onClick={() => setSidebarOpen(true)}
+            >
+                ☰
+            </button>
             <div className="main-content">
                 <div className="main-content-inner">
 

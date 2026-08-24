@@ -4,19 +4,33 @@ export default function Sidebar({
     selectedRecipeId,
     onSelectRecipe,
     onNewRecipe,
-    onDeleteRecipe
+    onDeleteRecipe,
+    sidebarOpen,
+    onClose
 }) {
     const [recipeToDelete, setRecipeToDelete] = useState(null)
     return (
-        <aside className="sidebar">
+    <>
+        <aside className={`sidebar ${sidebarOpen ? "sidebar-open" : ""}`}>
+
+            <button
+                className="sidebar-close-button"
+                onClick={onClose}
+                aria-label="Close menu"
+            >
+                ×
+            </button>
+
             <button
                 className="new-recipe-button"
                 onClick={onNewRecipe}
             >
                 + New Recipe
             </button>
+
             <div className="recipe-history-section">
-                <h2>Recents</h2> 
+                <h2>Recents</h2>
+
                 <div className="recipe-history">
                     {recipeHistory.map(recipe => (
                         <div
@@ -43,6 +57,7 @@ export default function Sidebar({
                     ))}
                 </div>
             </div>
+
             {recipeToDelete && (
                 <div className="delete-modal-backdrop">
                     <div className="delete-modal">
@@ -73,5 +88,12 @@ export default function Sidebar({
                 </div>
             )}
         </aside>
-    )
-}
+
+        {sidebarOpen && (
+            <div
+                className="sidebar-backdrop"
+                onClick={onClose}
+            />
+        )}
+    </>
+)}

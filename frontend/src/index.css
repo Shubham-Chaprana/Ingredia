@@ -528,3 +528,261 @@ ul.ingredients-list {
     font-size: 0.85rem;
     line-height: 20px;
 }
+@media (max-width: 768px) {
+
+    main {
+        height: calc(100vh - 80px);
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .main-content-inner {
+        padding: 20px;
+    }
+
+    .add-ingredient-form {
+        gap: 8px;
+    }
+
+    .add-ingredient-form > input {
+        min-width: 0;
+    }
+
+    .add-ingredient-form > button {
+        width: 130px;
+    }
+
+    .get-recipe-container {
+        padding: 12px 16px;
+        gap: 15px;
+    }
+
+    .get-recipe-container h3 {
+        font-size: 1rem;
+    }
+
+    .get-recipe-container p {
+        font-size: 0.8rem;
+    }
+
+    .get-recipe-container button {
+        white-space: nowrap;
+    }
+
+    .suggested-recipe-container {
+        font-size: 1rem;
+        line-height: 25px;
+    }
+
+    .empty-recipe-state {
+        margin-top: 40px;
+    }
+
+    .empty-recipe-state h2 {
+        font-size: 1.5rem;
+    }
+
+    .empty-recipe-state p {
+        font-size: 0.9rem;
+        line-height: 23px;
+    }
+
+    .delete-modal {
+        width: calc(100% - 32px);
+        padding: 22px;
+    }
+}
+@media (max-width: 480px) {
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .main-content-inner {
+        padding: 16px;
+    }
+
+    .add-ingredient-form {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .add-ingredient-form > input {
+        width: 100%;
+        max-width: none;
+        height: 40px;
+    }
+
+    .add-ingredient-form > button {
+        width: 100%;
+        height: 40px;
+    }
+
+    .get-recipe-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .get-recipe-container button {
+        width: 100%;
+        height: 40px;
+    }
+
+    ul.ingredients-list {
+        margin-bottom: 30px;
+    }
+
+    .suggested-recipe-container {
+        font-size: 0.95rem;
+        line-height: 24px;
+    }
+
+    .delete-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .delete-modal-actions button {
+        width: 100%;
+        min-height: 40px;
+    }
+}
+.mobile-menu-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: flex;
+        position: fixed;
+        top: 18px;
+        left: 15px;
+        z-index: 1100;
+
+        width: 42px;
+        height: 42px;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        background: white;
+        color: #141413;
+
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+}
+/* Mobile menu button */
+.mobile-menu-button {
+    display: none;
+}
+
+/* Sidebar close button and backdrop hidden on desktop */
+.sidebar-close-button,
+.sidebar-backdrop {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    /* Hamburger */
+    .mobile-menu-button {
+        display: flex;
+
+        position: fixed;
+        top: 18px;
+        left: 15px;
+        z-index: 1000;
+
+        width: 42px;
+        height: 42px;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        background: white;
+
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+
+    /* Sidebar becomes a drawer */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1200;
+
+        width: 280px;
+        height: 100vh;
+
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Open sidebar */
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    /* X button */
+    .sidebar-close-button {
+        display: flex;
+
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        width: 32px;
+        height: 32px;
+
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        border-radius: 6px;
+        background: transparent;
+
+        color: #475467;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .sidebar-close-button:hover {
+        background-color: #F0EFEB;
+    }
+
+    /* Dark overlay */
+    .sidebar-backdrop {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+        z-index: 1100;
+
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    /* Give the New Recipe button room below the X */
+    .sidebar .new-recipe-button {
+        margin-top: 35px;
+    }
+
+    /* Main content uses full width */
+    .main-content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .main-content-inner {
+        padding: 20px;
+    }
+}
