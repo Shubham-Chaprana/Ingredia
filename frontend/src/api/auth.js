@@ -5,7 +5,7 @@ export async function refreshAccessToken() {
     const refresh = getRefreshToken();
 
     const response = await fetch(
-        "http://127.0.0.1:8000/api/auth/refresh/",
+        "https://ingredia-cyb3.onrender.com/api/auth/refresh/",
         {
             method: "POST",
             headers: {
