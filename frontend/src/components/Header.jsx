@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <header>
             <img src={chefClaudeLogo} />
-            <h1>Chef Claude</h1>
+            <h1>Ingredia</h1>
 
             <button
                 onClick={() => {

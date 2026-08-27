@@ -36,7 +36,7 @@ export default function Register() {
             <div className="auth-card">
                 <div className="auth-brand">
                     <span className="auth-brand-icon">👨‍🍳</span>
-                    <h1>Chef Claude</h1>
+                    <h1>Ingredia</h1>
                 </div>
 
                 <div className="auth-heading">

@@ -108,7 +108,7 @@ export default function Main() {
                             <h2>What's cooking?</h2>
                             <p>
                                 Start by adding the ingredients you have on hand.
-                                Chef Claude will turn them into a recipe for you.
+                                Our Chef will turn them into a recipe for you.
                             </p>
                         </div>
                     )}
