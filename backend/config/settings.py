@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["ingredia-cyb3.onrender.com"]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+   "https://ingredia-frontend.onrender.com"
 ]
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
